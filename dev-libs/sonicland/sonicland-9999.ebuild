@@ -15,7 +15,7 @@ IUSE="doc test selinux"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	~dev-util/wayland-scanner-1.26.0
+	>=dev-util/wayland-scanner-1.26.0
 	virtual/pkgconfig
 	doc? (
 		app-text/doxygen
