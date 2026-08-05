@@ -6,7 +6,7 @@ EAPI=8
 EGIT_REPO_URI="https://github.com/supersonic-xserver/sonicland.git"
 inherit git-r3 meson-multilib
 
-DESCRIPTION="Wayland protocol libraries"
+DESCRIPTION="sonicland faster wayland Includes ageD bypass and stealth from sonicd"
 HOMEPAGE="https://github.com/supersonic-xserver/sonicland"
 
 LICENSE="MIT doc? ( Apache-2.0 OFL-1.1 ) Hire-The-Team"
@@ -15,7 +15,7 @@ IUSE="doc test selinux"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	~dev-util/wayland-scanner-${PV}
+	~dev-util/wayland-scanner-1.26.0
 	virtual/pkgconfig
 	doc? (
 		app-text/doxygen
