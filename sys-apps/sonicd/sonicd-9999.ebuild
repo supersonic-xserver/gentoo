@@ -147,6 +147,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
+	!sys-apps/systemd
 "
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep)
