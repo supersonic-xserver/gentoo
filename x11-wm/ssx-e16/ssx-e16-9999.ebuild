@@ -12,19 +12,14 @@ EGIT_REPO_URI="https://github.com/supersonic-xserver/ssX-e16.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="+alsa audiofile +dbus debug +dialogs doc examples
-libhack editline modules nls no-container opengl +player
-pulseaudio readline +sndfile sndio +sound +xcomposite +xft xi2
+IUSE="audiofile +dbus debug +dialogs doc examples
+libhack editline modules nls no-container +player
+readline +sndfile sndio +sound +xcomposite +xft xi2
 xinerama xpresent xscreensaver +xrandr +xrender +xsm +xsync zoom"
 
 REQUIRED_USE="
 	?? ( editline readline )
-	opengl? ( xcomposite xrender )
-	sound? (
-		|| ( alsa player pulseaudio )
-		alsa?       ( ^^ ( sndfile audiofile ) )
-		pulseaudio? ( ^^ ( sndfile audiofile ) )
-	)
+	sound? ( player )
 "
 
 BDEPEND="
@@ -39,18 +34,9 @@ COMMON_DEPEND="
 	x11-misc/xbitmaps
 	dbus? ( sys-apps/dbus )
 	editline? ( dev-libs/editline:= )
-	opengl? (
-		media-libs/glu
-		media-libs/libglvnd[X]
-	)
 	readline? ( sys-libs/readline:= )
 	sound? (
-		alsa? ( media-libs/alsa-lib )
 		player? ( media-sound/alsa-utils )
-		pulseaudio? ( || (
-			media-libs/libpulse
-			media-sound/apulse[sdk]
-		) )
 		audiofile? ( media-libs/audiofile:= )
 		sndfile? ( media-libs/libsndfile )
 	)
@@ -88,7 +74,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use sound enable-sound)
 		$(meson_use zoom enable-zoom)
-		$(meson_use opengl enable-glx)
 		$(meson_use xcomposite enable-composite)
 		$(meson_use xpresent enable-xpresent)
 		$(meson_use xscreensaver enable-screensaver)
@@ -99,8 +84,6 @@ src_configure() {
 		$(meson_use xrender enable-xrender)
 		$(meson_use xsync enable-xsync)
 		$(meson_use xi2 enable-xi2)
-		$(meson_use pulseaudio enable-sound-pulse)
-		$(meson_use alsa enable-sound-alsa)
 		$(meson_use sndio enable-sound-sndio)
 		$(meson_use player enable-sound-player)
 		$(meson_use xsm enable-sm)
