@@ -84,8 +84,6 @@ src_prepare() {
 	default
 }
 
-# Note: meson_use for 'boolean', meson_feature for non-'boolean'
-
 src_configure() {
 	local emesonargs=(
 		$(meson_use sound enable-sound)
@@ -101,7 +99,7 @@ src_configure() {
 		$(meson_use xrender enable-xrender)
 		$(meson_use xsync enable-xsync)
 		$(meson_use xi2 enable-xi2)
-		$(meson_use pulseaudio enable-sound-pulseaudio)
+		$(meson_use pulseaudio enable-sound-pulse)
 		$(meson_use alsa enable-sound-alsa)
 		$(meson_use sndio enable-sound-sndio)
 		$(meson_use player enable-sound-player)
