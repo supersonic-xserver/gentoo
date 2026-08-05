@@ -96,7 +96,7 @@ src_configure() {
 src_install() {
 	default
 	docompress -x /usr/share/doc/${PF}/e16.html
-	dodoc COMPLIANCE docs/e16.html
+	dodoc COMPLIANCE
 	use examples && dodoc -r sample-scripts
 }
 
