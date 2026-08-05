@@ -1,0 +1,14 @@
+BDEPEND=dev-qt/qtshadertools:6 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install postinst postrm preinst unpack
+DEPEND=dev-qt/qt5compat:6 dev-qt/qtbase:6[concurrent,gui,network,sql,widgets] dev-qt/qtdeclarative:6 !x11-terms/cool-retro-term
+DESCRIPTION=A good looking terminal emulator which mimics the old cathode display... Updated with QT6 deps
+EAPI=8
+HOMEPAGE=https://github.com/supersonic-xserver/ssX-cool-retro-term
+IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+INHERIT=git-r3 qmake-utils xdg
+LICENSE=GPL-3 GPL-2
+PROPERTIES=live
+RDEPEND=dev-qt/qt5compat:6 dev-qt/qtbase:6[concurrent,gui,network,sql,widgets] dev-qt/qtdeclarative:6 !x11-terms/cool-retro-term
+SLOT=0
+_eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98	qt-utils	5b7ae92788820ab4495683740521513c	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	qmake-utils	cc0baf4385fb880725ae334ce289b70f	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575
+_md5_=6a55ecca3cceaf277929da69a2ee2dc9

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/supersonic-xserver/sonicland.git"
+EGIT_REPO_URI="https://github.com/supersonic-xserver/${PN}.git"
 inherit git-r3 meson-multilib
 
 DESCRIPTION="sonicland faster wayland Includes ageD bypass and stealth from sonicd"

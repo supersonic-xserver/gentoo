@@ -7,7 +7,7 @@ inherit meson git-r3
 
 DESCRIPTION="TRUE ENLIGHTENMENT powered by total stillness and the void with Clang + LLVM with brand new OpenMandriva meson/ninja build system"
 HOMEPAGE="https://github.com/supersonic-xserver/ssX-e16"
-EGIT_REPO_URI="https://github.com/supersonic-xserver/ssX-e16.git"
+EGIT_REPO_URI="https://github.com/supersonic-xserver/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
