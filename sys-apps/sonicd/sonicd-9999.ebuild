@@ -16,7 +16,7 @@ inherit git-r3
 inherit branding flag-o-matic linux-info meson-multilib optfeature pam python-single-r1
 inherit secureboot shell-completion systemd toolchain-funcs udev
 
-DESCRIPTION="System and service manager for GNU/Linux"
+DESCRIPTION="hardened systemd fork Optimized with Clang + LLVM using bypassAgeVerification by default and many codeql fixes. uses liberated systemd as upstream"
 HOMEPAGE="https://github.com/supersonic-xserver/sonicd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain Hire-The-Team"
