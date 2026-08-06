@@ -25,7 +25,7 @@ IUSE="
 	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils fido2
 	+gcrypt gnutls homed idn imds importd +kernel-install +kmod +libarchive
 	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
-	remote +resolvconf +seccomp selinux sysv-utils tpm ukify vanilla xkb
+	remote +resolvconf +seccomp selinux tpm ukify vanilla xkb
 	+zstd
 "
 REQUIRED_USE="
@@ -138,11 +138,7 @@ RDEPEND="${COMMON_DEPEND}
 		sec-policy/selinux-base-policy[systemd]
 		sec-policy/selinux-ntp
 	)
-	sysv-utils? (
-		!sys-apps/openrc[sysv-utils(-)]
-		!sys-apps/sysvinit
-	)
-	!sysv-utils? ( sys-apps/sysvinit )
+	sys-apps/sysvinit
 	resolvconf? ( !net-dns/openresolv )
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
@@ -155,7 +151,6 @@ PDEPEND="
 	>=sys-apps/dbus-1.9.8[systemd]
 	>=sys-fs/udev-init-scripts-34
 	policykit? ( sys-auth/polkit )
-	!sysv-utils? ( sys-apps/sonicd-initctl )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )
 "
 
@@ -425,11 +420,9 @@ multilib_src_install_all() {
 		rm -f "${ED}"/usr/bin/resolvconf || die
 	fi
 
-	if ! use sysv-utils; then
-		rm "${ED}"/usr/bin/{halt,init,poweroff,reboot,shutdown} || die
-		rm "${ED}"/usr/share/man/man1/init.1 || die
-		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8 || die
-	fi
+	rm "${ED}"/usr/bin/{halt,init,poweroff,reboot,shutdown} || die
+	rm "${ED}"/usr/share/man/man1/init.1 || die
+	rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8 || die
 
 	# https://bugs.gentoo.org/761763
 	rm -r "${ED}"/usr/lib/sysusers.d || die
