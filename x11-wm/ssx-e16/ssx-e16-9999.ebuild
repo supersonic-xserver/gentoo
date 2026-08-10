@@ -94,10 +94,27 @@ src_configure() {
 }
 
 src_install() {
-	default
-	docompress -x /usr/share/doc/${PF}/e16.html
-	dodoc COMPLIANCE
-	use examples && dodoc -r sample-scripts
+    default
+    docompress -x /usr/share/doc/${PF}/e16.html
+    dodoc COMPLIANCE
+    use examples && dodoc -r sample-scripts
+
+    # Rename the core e16 binary to ssX-e16 inside the staging image
+    if [[ -f "${ED}/usr/bin/e16" ]]; then
+        mv "${ED}/usr/bin/e16" "${ED}/usr/bin/ssX-e16" || die "Failed to rename binary"
+        dosym ssX-e16 /usr/bin/ssx-e16
+    fi
+
+    # Install the session desktop entry for SDDM/LightDM/LXDM
+    insinto /usr/share/xsessions
+    newins - ssX-e16.desktop <<-_EOF_
+[Desktop Entry]
+Name=SuperSonicX (e16)
+Comment=SuperSonicX Enlightenment 16 Session
+Exec=/usr/bin/ssX-e16
+Type=Application
+DesktopNames=e16
+_EOF_
 }
 
 pkg_postinst() {
