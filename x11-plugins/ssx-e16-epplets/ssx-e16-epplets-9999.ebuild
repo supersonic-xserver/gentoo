@@ -11,21 +11,25 @@ HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="https://download.enlightenment.org/rel/apps/e16/epplets/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="BSD"
+LICENSE="GPL-2+ BSD public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="alsa audiofile"
+KEYWORDS=""
+IUSE="cdaudio libgtop opengl alsa audiofile"
 
-DEPEND="
-    >=media-libs/imlib2-1.4.0[X]
+RDEPEND="
+    media-libs/imlib2[X]
     x11-libs/libX11
     x11-libs/libXext
-    x11-libs/libXpm
+    || ( x11-wm/ssx-e16 )
+    cdaudio? ( media-libs/libcdaudio )
+    libgtop? ( gnome-base/libgtop:= )
+    opengl? ( media-libs/libglvnd[X] )
     alsa? ( media-libs/alsa-lib )
     audiofile? ( media-libs/audiofile:= )
 "
-RDEPEND="${DEPEND}
-    || ( x11-wm/ssx-e16 )
+DEPEND="
+    ${RDEPEND}
+    x11-base/xorg-proto
 "
 BDEPEND="
     virtual/pkgconfig
@@ -38,7 +42,20 @@ src_prepare() {
 }
 
 src_configure() {
-    econf \
-        $(use_enable alsa) \
+    local myconf=(
+        $(use_enable cdaudio)
+        $(use_enable opengl glx)
+        $(use_with libgtop)
+        $(use_enable alsa)
         $(use_enable audiofile)
+        --disable-esd
+        --disable-static
+        --disable-werror
+    )
+    econf "${myconf[@]}"
+}
+
+src_install() {
+    default
+    find "${ED}"/usr -name '*.la' -delete || die
 }
