@@ -20,10 +20,6 @@ xinerama xpresent xscreensaver +xrandr +xrender +xsm +xsync zoom"
 REQUIRED_USE="
 	?? ( editline readline )
 	sound? ( player )
-    epplets? ( x11-plugins/e16-epplets )
-    !x11-wm/enlightenment:0
-    !x11-wm/e16
-	
 "
 
 BDEPEND="
@@ -63,6 +59,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	nls? ( virtual/libintl )
+	epplets? ( x11-plugins/e16-epplets )
 	!x11-wm/enlightenment:0
 	!x11-wm/e16
 "
