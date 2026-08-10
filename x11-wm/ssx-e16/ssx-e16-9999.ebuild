@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson git-r3
+inherit meson git-r3 desktop
 
 DESCRIPTION="TRUE ENLIGHTENMENT powered by total stillness and the void with Clang + LLVM with brand new OpenMandriva meson/ninja build system"
 HOMEPAGE="https://github.com/supersonic-xserver/ssX-e16"
