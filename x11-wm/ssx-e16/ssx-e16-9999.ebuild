@@ -94,7 +94,12 @@ src_configure() {
 }
 
 src_install() {
-    default
+	meson_src_install
+
+    # Debug print: shows every file staged in the image directory during build
+    einfo "=== STAGING IMAGE CONTENTS ==="
+    find "${ED}" -print
+    einfo "=============================="
     docompress -x /usr/share/doc/${PF}/e16.html
     dodoc COMPLIANCE
     use examples && dodoc -r sample-scripts
