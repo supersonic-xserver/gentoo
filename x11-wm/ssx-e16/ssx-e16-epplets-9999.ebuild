@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools git-r3
 
 DESCRIPTION="Collection of applets (epplets) for Enlightenment 16"
 HOMEPAGE="https://www.enlightenment.org/"
