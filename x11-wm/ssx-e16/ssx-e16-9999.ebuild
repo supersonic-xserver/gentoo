@@ -99,9 +99,15 @@ src_install() {
     dodoc COMPLIANCE
     use examples && dodoc -r sample-scripts
 
-    # Rename the core e16 binary to ssX-e16 inside the staging image
-    if [[ -f "${ED}/usr/bin/e16" ]]; then
-        mv "${ED}/usr/bin/e16" "${ED}/usr/bin/ssX-e16" || die "Failed to rename binary"
+	# Locate and rename the compiled binary in the staging image
+    local bindir="${ED}/usr/bin"
+    
+    if [[ -f "${bindir}/e16" ]]; then
+        mv -f "${bindir}/e16" "${bindir}/ssX-e16" || die "Failed to rename e16 to ssX-e16"
+    fi
+
+    # Ensure both uppercase and lowercase command aliases exist
+    if [[ -f "${bindir}/ssX-e16" && ! -e "${bindir}/ssx-e16" ]]; then
         dosym ssX-e16 /usr/bin/ssx-e16
     fi
 
