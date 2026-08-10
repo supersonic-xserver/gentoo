@@ -19,7 +19,6 @@ xinerama xpresent xscreensaver +xrandr +xrender +xsm +xsync zoom"
 
 REQUIRED_USE="
 	?? ( editline readline )
-	nls? ( virtual/libintl )
 	sound? ( player )
     epplets? ( x11-plugins/e16-epplets )
     !x11-wm/enlightenment:0
