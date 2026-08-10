@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="alsa audiofile"
 
 DEPEND="
-    >=x11-libs/imlib2-1.4.0[X]
+    >=media-libs/imlib2-1.4.0[X]
     x11-libs/libX11
     x11-libs/libXext
     x11-libs/libXpm
