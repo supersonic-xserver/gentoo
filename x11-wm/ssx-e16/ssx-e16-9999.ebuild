@@ -12,14 +12,19 @@ EGIT_REPO_URI="https://github.com/supersonic-xserver/${PN}.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus debug +dialogs doc examples
+IUSE="audiofile +dbus debug +dialogs doc examples +epplets
 libhack editline modules nls no-container +player
 readline +sndfile sndio +sound +xcomposite +xft xi2
 xinerama xpresent xscreensaver +xrandr +xrender +xsm +xsync zoom"
 
 REQUIRED_USE="
 	?? ( editline readline )
+	nls? ( virtual/libintl )
 	sound? ( player )
+    epplets? ( x11-plugins/e16-epplets )
+    !x11-wm/enlightenment:0
+    !x11-wm/e16
+	
 "
 
 BDEPEND="
