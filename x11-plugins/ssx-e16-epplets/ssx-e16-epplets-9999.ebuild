@@ -5,9 +5,11 @@ EAPI=8
 
 inherit autotools
 
+MY_P="e16-epplets-0.18"
 DESCRIPTION="Collection of applets (epplets) for Enlightenment 16"
 HOMEPAGE="https://www.enlightenment.org/"
-SRC_URI="https://download.enlightenment.org/rel/apps/e16/epplets/${P}.tar.xz"
+SRC_URI="https://download.enlightenment.org/rel/apps/e16/epplets/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
