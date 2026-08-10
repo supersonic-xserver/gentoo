@@ -59,7 +59,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	nls? ( virtual/libintl )
-	epplets? ( x11-plugins/e16-epplets )
+	epplets? ( x11-plugins/ssx-e16-epplets )
 	!x11-wm/enlightenment:0
 	!x11-wm/e16
 "
