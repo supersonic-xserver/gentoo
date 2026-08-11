@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson git-r3 desktop
+inherit meson git-r3
 
 DESCRIPTION="TRUE ENLIGHTENMENT powered by total stillness and the void with Clang + LLVM with brand new OpenMandriva meson/ninja build system"
 HOMEPAGE="https://github.com/supersonic-xserver/ssX-e16"
@@ -97,29 +97,29 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-    # Debug print: shows every file staged in the image directory during build
-    einfo "=== STAGING IMAGE CONTENTS ==="
-    find "${ED}" -print
-    einfo "=============================="
-    docompress -x /usr/share/doc/${PF}/e16.html
-    dodoc COMPLIANCE
-    use examples && dodoc -r sample-scripts
+	# Debug print: shows every file staged in the image directory during build
+	einfo "=== STAGING IMAGE CONTENTS ==="
+	find "${ED}" -print
+	einfo "=============================="
+	docompress -x /usr/share/doc/${PF}/e16.html
+	dodoc COMPLIANCE
+	use examples && dodoc -r sample-scripts
 
 	# Locate and rename the compiled binary in the staging image
-    local bindir="${ED}/usr/bin"
-    
-    if [[ -f "${bindir}/e16" ]]; then
-        mv -f "${bindir}/e16" "${bindir}/ssX-e16" || die "Failed to rename e16 to ssX-e16"
-    fi
+	local bindir="${ED}/usr/bin"
 
-    # Ensure both uppercase and lowercase command aliases exist
-    if [[ -f "${bindir}/ssX-e16" && ! -e "${bindir}/ssx-e16" ]]; then
-        dosym ssX-e16 /usr/bin/ssx-e16
-    fi
+	if [[ -f "${bindir}/e16" ]]; then
+		mv -f "${bindir}/e16" "${bindir}/ssX-e16" || die "Failed to rename e16 to ssX-e16"
+	fi
 
-    # Install the session desktop entry for SDDM/LightDM/LXDM
-    insinto /usr/share/xsessions
-    newins - ssX-e16.desktop <<-_EOF_
+	# Ensure both uppercase and lowercase command aliases exist
+	if [[ -f "${bindir}/ssX-e16" && ! -e "${bindir}/ssx-e16" ]]; then
+		dosym ssX-e16 /usr/bin/ssx-e16
+	fi
+
+	# Install the session desktop entry for SDDM/LightDM/LXDM
+	insinto /usr/share/xsessions
+	newins - ssX-e16.desktop <<-_EOF_
 [Desktop Entry]
 Name=SuperSonicX (e16)
 Comment=SuperSonicX Enlightenment 16 Session
