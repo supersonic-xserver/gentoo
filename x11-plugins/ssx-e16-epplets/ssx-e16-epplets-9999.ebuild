@@ -20,7 +20,6 @@ RDEPEND="
 	media-libs/imlib2[X]
 	x11-libs/libX11
 	x11-libs/libXext
-	|| ( x11-wm/ssx-e16 )
 	cdaudio? ( media-libs/libcdaudio )
 	libgtop? ( gnome-base/libgtop:= )
 	opengl? ( media-libs/libglvnd[X] )
