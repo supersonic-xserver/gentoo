@@ -82,7 +82,7 @@ BDEPEND="
 	app-alternatives/lex
 "
 PDEPEND="
-	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
+	xorg? ( x11-base/xorg-drivers )"
 
 REQUIRED_USE="!minimal? (
 		|| ( ${IUSE_SERVERS} )
