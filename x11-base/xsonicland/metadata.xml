@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person"><name>painter4supersonicx</name><email>267173835+painter4supersonicx@users.noreply.github.com</email></maintainer>
+    <upstream><remote-id type="github">supersonic-xserver/xsonicland</remote-id></upstream>
+</pkgmetadata>
