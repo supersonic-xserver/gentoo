@@ -13,6 +13,8 @@ IUSE_SERVERS="xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug +elogind minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
+PROVIDE="x11-base/xorg-server"
+
 CDEPEND="
 	media-libs/libglvnd[X]
 	dev-libs/libbsd
