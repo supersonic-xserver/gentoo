@@ -93,6 +93,11 @@ REQUIRED_USE="!minimal? (
 	?? ( elogind systemd )"
 
 src_configure() {
+    export CC=clang
+    export CXX=clang++
+    export AR=llvm-ar
+    export NM=llvm-nm
+    export RANLIB=llvm-ranlib
 	# bug #835653
 	use x86 && replace-flags -Os -O2
 	use x86 && replace-flags -Oz -O2
