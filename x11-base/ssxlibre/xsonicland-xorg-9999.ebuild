@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic xsonicland-meson
 EGIT_REPO_URI="https://github.com/supersonic-xserver/xsonicland.git"
 
-DESCRIPTION="ssXLibre for xsonicland this makes it possible to use latest glamor based code from XLibre under sonicland or regular wayland"
+DESCRIPTION="Xorg edition of xsonicland lets you build the latest supersonic restoration of the full xserver as xorg"
 SLOT="0/${PV}"
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
