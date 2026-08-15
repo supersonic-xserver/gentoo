@@ -10,7 +10,7 @@ DESCRIPTION="Xorg edition of xsonicland lets you build the latest supersonic res
 SLOT="0/${PV}"
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind minimal selinux suid systemd test +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind minimal selinux suid systemd test +udev unwind xcsecurity +clang"
 RESTRICT="!test? ( test )"
 
 PROVIDE="x11-base/xorg-server"
@@ -82,6 +82,10 @@ RDEPEND="${CDEPEND}
 "
 BDEPEND="
 	app-alternatives/lex
+	clang? (
+		llvm-core/clang
+		llvm-core/llvm
+	)
 "
 PDEPEND="
 	xorg? ( x11-base/xorg-drivers )"
@@ -93,11 +97,13 @@ REQUIRED_USE="!minimal? (
 	?? ( elogind systemd )"
 
 src_configure() {
-    export CC=clang
-    export CXX=clang++
-    export AR=llvm-ar
-    export NM=llvm-nm
-    export RANLIB=llvm-ranlib
+	if use clang; then
+		export CC=clang
+		export CXX=clang++
+		export AR=llvm-ar
+		export NM=llvm-nm
+		export RANLIB=llvm-ranlib
+	fi
 	# bug #835653
 	use x86 && replace-flags -Os -O2
 	use x86 && replace-flags -Oz -O2
